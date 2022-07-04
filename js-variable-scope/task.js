@@ -17,23 +17,23 @@
  * the console outside the function. What happened?
  * =-=-=-= variable is not visible outside the function.
  */
-var outside_var = "WORLD";
+var outsideVar = "WORLD";
 
 function foo(start) {
-    var inner_var = "Will not work...";
+    var innerVar = "Will not work...";
 
     for (let i = 0; i < start; i++) {
-        var curr_var = i * 2;
-        let curr_let = i * 3;
-        console.log("curr_var : " + curr_var + " | curr_let : " + curr_let);
+        var currVar = i * 2;
+        let currLet = i * 3;
+        console.log("currVar : " + currVar + " | currLet : " + currLet);
     }
 
-    console.log("for_end");
-    console.log("curr_var : " + curr_var);
-    // console.log("curr_let : " + curr_let);
-    console.log("Hello, " + outside_var + "!");
+    console.log("FOR end");
+    console.log("currVar : " + currVar);
+    // console.log("currLet : " + currLet);
+    console.log("Hello, " + outsideVar + "!");
 }
 
-// console.log(inner_var);
+// console.log(innerVar);
 
 foo(5);
