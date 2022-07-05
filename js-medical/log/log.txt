@@ -1,0 +1,7 @@
+[7/5/2022, 10:02:34 AM] Kreiran doktor 'Milan'
+[7/5/2022, 10:02:34 AM] Kreiran pacijent 'Dragan'
+[7/5/2022, 10:02:34 AM] Pacijent 'Dragan' bira za izabranog lekara doktora 'Milan'
+[7/5/2022, 10:02:34 AM] Doktor 'Milan' zakazuje merenje nivoa secera u krvi za pacijenta 'Dragan'
+[7/5/2022, 10:02:34 AM] Doktor 'Milan' zakazuje merenje krvnog pritiska za pacijenta 'Dragan'
+[7/5/2022, 10:02:34 AM] Pacijent 'Dragan' je izmerio krvni pritisak: 77 / 128 (puls 98)
+[7/5/2022, 10:02:34 AM] Pacijent 'Dragan' je izmerio nivo secera u krvi: 134 (poslednji obrok 7/5/2022, 10:02:34 AM)
