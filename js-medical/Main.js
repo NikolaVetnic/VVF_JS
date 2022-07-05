@@ -1,10 +1,6 @@
-import * as fs from "fs";
-
 import { Doctor } from "./people/Doctor.js";
 import { Patient } from "./people/Patient.js";
-import { saveLog } from "./files/SaveLog.js";
-
-let log = "";
+import { Logger } from "./files/Logger.js";
 
 const examTypes = [
     "BLOOD_PRESSURE_EXAM",
@@ -12,49 +8,33 @@ const examTypes = [
     "SUGAR_LEVEL_EXAM",
 ];
 
-let doktorMilanMilanovic = new Doctor("Milan", "Milanovic", "opsta praksa");
-log = log.concat(
-    "[" + new Date().toLocaleString() + "] Kreiran doktor 'Milan'\n"
+const logger = new Logger();
+
+const doktorMilanMilanovic = new Doctor(
+    "Milan",
+    "Milanovic",
+    "opsta praksa",
+    logger
 );
 
-let pacijentDraganDraganic = new Patient(
+const pacijentDraganDraganic = new Patient(
     "Dragan",
     "Draganic",
     "1234567890123",
-    "1"
-);
-log = log.concat(
-    "[" + new Date().toLocaleString() + "] Kreiran pacijent 'Dragan'\n"
+    "1",
+    logger
 );
 
 pacijentDraganDraganic.setDoctor(doktorMilanMilanovic);
-log = log.concat(
-    "[" +
-        new Date().toLocaleString() +
-        "] Pacijent 'Dragan' bira za izabranog lekara doktora 'Milan'\n"
-);
 
-doktorMilanMilanovic.addExam(pacijentDraganDraganic, examTypes[2]);
-log = log.concat(
-    "[" +
-        new Date().toLocaleString() +
-        "] Doktor 'Milan' zakazuje merenje nivoa secera u krvi za pacijenta 'Dragan'\n"
-);
-
-doktorMilanMilanovic.addExam(pacijentDraganDraganic, examTypes[0]);
-log = log.concat(
-    "[" +
-        new Date().toLocaleString() +
-        "] Doktor 'Milan' zakazuje merenje krvnog pritiska za pacijenta 'Dragan'\n"
-);
-
-while (pacijentDraganDraganic.examsToDo.length > 0) {
-    log = log.concat(
-        "[" +
-            new Date().toLocaleString() +
-            "] " +
-            pacijentDraganDraganic.performNextExam()
-    );
+try {
+    doktorMilanMilanovic.addExam(pacijentDraganDraganic, examTypes[2]);
+    doktorMilanMilanovic.addExam(pacijentDraganDraganic, examTypes[0]);
+} catch (err) {
+    console.error(`${err.name}: ${err.message}`);
 }
 
-saveLog(log);
+pacijentDraganDraganic.performAllExams();
+
+// saveLog(log);
+logger.exportBufferToLogFile();

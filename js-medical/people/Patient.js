@@ -1,54 +1,48 @@
-import { BloodPressureExam } from "../exams/BloodPressureExam.js";
-import { CholesterolLevelExam } from "../exams/CholesterolLevelExam.js";
 import { Person } from "./Person.js";
 
 export class Patient extends Person {
-    constructor(firstName, lastName, personalId, medicalRecordNo) {
-        super(firstName, lastName);
+    constructor(firstName, lastName, personalId, medicalRecordNo, logger) {
+        super(firstName, lastName, logger);
+
         this.personalId = personalId;
         this.medicalRecordNo = medicalRecordNo;
         this.doctor = {};
         this.examsToDo = new Array();
         this.examsDone = new Array();
+
+        this.logger.logPatientCreated(this);
     }
 
     setDoctor(doctor) {
         this.doctor = doctor;
         this.doctor.addPatient(this);
+
+        this.logger.logDoctorSet(this, doctor);
+    }
+
+    scheduleExam(exam) {
+        this.examsToDo.push(exam);
     }
 
     performNextExam() {
         if (this.examsToDo.length === 0) {
-            return;
+            throw new Error("no scheduled exams found");
         }
 
         const currentExam = this.examsToDo.pop();
+        currentExam.performExam();
         this.examsDone.push(currentExam);
 
-        if (currentExam instanceof BloodPressureExam) {
-            currentExam.highValue = parseInt(Math.random() * 40, 10) + 100;
-            currentExam.lowValue = parseInt(Math.random() * 40, 10) + 60;
-            currentExam.pulse = parseInt(Math.random() * 40, 10) + 60;
+        this.logger.logPerformExamByPatient(currentExam, this);
+    }
 
-            return `Pacijent '${this.firstName}' je izmerio krvni pritisak: ${currentExam.lowValue} / ${currentExam.highValue} (puls ${currentExam.pulse})\n`;
-        } else if (currentExam instanceof CholesterolLevelExam) {
-            currentExam.lastMealTime = new Date();
-            currentExam.value = parseInt(Math.random() * 40, 10) + 180;
-
-            return `Pacijent '${
-                this.firstName
-            }' je izmerio nivo holesterola u krvi: ${
-                currentExam.value
-            } (poslednji obrok ${currentExam.lastMealTime.toLocaleString()})\n`;
-        } else {
-            currentExam.lastMealTime = new Date();
-            currentExam.value = parseInt(Math.random() * 40, 10) + 120;
-
-            return `Pacijent '${
-                this.firstName
-            }' je izmerio nivo secera u krvi: ${
-                currentExam.value
-            } (poslednji obrok ${currentExam.lastMealTime.toLocaleString()})\n`;
+    performAllExams() {
+        while (this.examsToDo.length > 0) {
+            try {
+                this.performNextExam();
+            } catch (err) {
+                console.error(`${err.name}: ${err.message}`);
+            }
         }
     }
 }
