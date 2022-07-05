@@ -11,4 +11,10 @@ export class SugarLevelExam extends Exam {
         this.lastMealTime = new Date();
         this.value = parseInt(Math.random() * 40, 10) + 120;
     }
+
+    getExamInfo() {
+        return `je izmerio nivo secera u krvi: ${
+            this.value
+        } (poslednji obrok ${this.lastMealTime.toLocaleString()})\n`;
+    }
 }

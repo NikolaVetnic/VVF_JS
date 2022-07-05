@@ -50,45 +50,7 @@ export class Logger {
         this.buffer = this.buffer.concat(
             `${this.getCurrentDatePrefixAsString()} Pacijent '${
                 patient.firstName
-            }' `
-        );
-
-        if (exam instanceof BloodPressureExam) {
-            this.logBloodPressureExam(exam);
-        } else if (exam instanceof CholesterolLevelExam) {
-            this.logCholesterolExam(exam);
-        } else if (exam instanceof SugarLevelExam) {
-            this.logSugarLevelExam(exam);
-        } else {
-            this.logDefaultExam();
-        }
-    }
-
-    logBloodPressureExam(exam) {
-        this.buffer = this.buffer.concat(
-            `je izmerio krvni pritisak: ${exam.lowValue} / ${exam.highValue} (puls ${exam.pulse})\n`
-        );
-    }
-
-    logCholesterolExam(exam) {
-        this.buffer = this.buffer.concat(
-            `je izmerio nivo holesterola u krvi: ${
-                exam.value
-            } (poslednji obrok ${exam.lastMealTime.toLocaleString()})\n`
-        );
-    }
-
-    logSugarLevelExam(exam) {
-        this.buffer = this.buffer.concat(
-            `je izmerio nivo secera u krvi: ${
-                exam.value
-            } (poslednji obrok ${exam.lastMealTime.toLocaleString()})\n`
-        );
-    }
-
-    logDefaultExam() {
-        this.buffer = this.buffer.concat(
-            `je uradio nepoznati laboratorijski pregled\n`
+            }' ${exam.getExamInfo()}`
         );
     }
 

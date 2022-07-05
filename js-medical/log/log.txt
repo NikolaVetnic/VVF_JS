@@ -1,7 +1,7 @@
-[7/5/2022, 12:02:11 PM] Kreiran doktor 'Milan'
-[7/5/2022, 12:02:11 PM] Kreiran pacijent 'Dragan'
-[7/5/2022, 12:02:11 PM] Pacijent 'Dragan' bira za izabranog lekara doktora 'Milan'
-[7/5/2022, 12:02:11 PM] Doktor 'Milan' zakazuje pregled tipa 'SUGAR_LEVEL_EXAM' za pacijenta 'Dragan'
-[7/5/2022, 12:02:11 PM] Doktor 'Milan' zakazuje pregled tipa 'BLOOD_PRESSURE_EXAM' za pacijenta 'Dragan'
-[7/5/2022, 12:02:11 PM] Pacijent 'Dragan' je izmerio krvni pritisak: 61 / 115 (puls 72)
-[7/5/2022, 12:02:11 PM] Pacijent 'Dragan' je izmerio nivo secera u krvi: 152 (poslednji obrok 7/5/2022, 12:02:11 PM)
+[7/5/2022, 12:15:13 PM] Kreiran doktor 'Milan'
+[7/5/2022, 12:15:13 PM] Kreiran pacijent 'Dragan'
+[7/5/2022, 12:15:13 PM] Pacijent 'Dragan' bira za izabranog lekara doktora 'Milan'
+[7/5/2022, 12:15:13 PM] Doktor 'Milan' zakazuje pregled tipa 'SUGAR_LEVEL_EXAM' za pacijenta 'Dragan'
+[7/5/2022, 12:15:13 PM] Doktor 'Milan' zakazuje pregled tipa 'BLOOD_PRESSURE_EXAM' za pacijenta 'Dragan'
+[7/5/2022, 12:15:13 PM] Pacijent 'Dragan' je izmerio krvni pritisak: 92 / 126 (puls 99)
+[7/5/2022, 12:15:13 PM] Pacijent 'Dragan' je izmerio nivo secera u krvi: 126 (poslednji obrok 7/5/2022, 12:15:13 PM)

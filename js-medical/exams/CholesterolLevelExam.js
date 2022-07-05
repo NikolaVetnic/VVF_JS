@@ -11,4 +11,10 @@ export class CholesterolLevelExam extends Exam {
         this.lastMealTime = new Date();
         this.value = parseInt(Math.random() * 40, 10) + 180;
     }
+
+    getExamInfo() {
+        return `je izmerio nivo holesterola u krvi: ${
+            this.value
+        } (poslednji obrok ${this.lastMealTime.toLocaleString()})\n`;
+    }
 }

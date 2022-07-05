@@ -13,4 +13,8 @@ export class BloodPressureExam extends Exam {
         this.lowValue = parseInt(Math.random() * 40, 10) + 60;
         this.pulse = parseInt(Math.random() * 40, 10) + 60;
     }
+
+    getExamInfo() {
+        return `je izmerio krvni pritisak: ${this.lowValue} / ${this.highValue} (puls ${this.pulse})\n`;
+    }
 }
